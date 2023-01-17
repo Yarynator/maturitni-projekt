@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9f80f4f1466e741b4e3316fdb47d22, type: 3}
+  m_Name: AspuassauSceneMapList
+  m_EditorClassIdentifier: 
+  moveMapInSceneList:
+  - {fileID: 11400000, guid: e82e73226fcf6ae418822531e1fea42f, type: 2}
+  - {fileID: 11400000, guid: ae4a922689d895c4a97b1fc8fcb8ac4b, type: 2}
+  - {fileID: 11400000, guid: 662b34f82ca64d74585ca013ea07dfe1, type: 2}
+  - {fileID: 11400000, guid: bc12442ef441edd4d9fe08fe40345479, type: 2}
+  - {fileID: 11400000, guid: 980fd22134132df44af321525482bd81, type: 2}
+  - {fileID: 11400000, guid: 8afeb6d5ac5458f479adca7c3531b8a2, type: 2}

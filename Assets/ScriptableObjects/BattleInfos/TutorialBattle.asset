@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f396c0dd09111d4f8b6ff3bf481a51d, type: 3}
+  m_Name: TutorialBattle
+  m_EditorClassIdentifier: 
+  battleScene: 2
+  enemyList:
+  - gridPosition:
+      x: 13
+      y: 21
+    playerType: Eowyn
+    attack: 2
+    defense: 1
+    maxMoveDistance: 4
+    actions:
+    - move
+    - attack
+    health: 30
+  - gridPosition:
+      x: 5
+      y: 21
+    playerType: Artemis
+    attack: 5
+    defense: 3
+    maxMoveDistance: 6
+    actions:
+    - move
+    - attack
+    - fireball
+    health: 20

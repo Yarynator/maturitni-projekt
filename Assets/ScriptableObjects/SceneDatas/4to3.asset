@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce301957c7d75104caf2bbe3f0a27000, type: 3}
+  m_Name: 4to3
+  m_EditorClassIdentifier: 
+  fromScene: 3
+  toScene: 4
+  spawnGridPosition:
+    x: 10
+    y: 2
+  touchGridPosition:
+    x: 10
+    y: 7

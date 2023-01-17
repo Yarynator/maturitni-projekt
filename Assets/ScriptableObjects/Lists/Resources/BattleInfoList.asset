@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83cdc2a6d8008b498d11363abc09b9f, type: 3}
+  m_Name: BattleInfoList
+  m_EditorClassIdentifier: 
+  battleInfoList:
+  - {fileID: 11400000, guid: d6435f1efc3c5994b81b3927cb00d9e0, type: 2}
+  - {fileID: 11400000, guid: 40a9f56b9ebcf944da9d9093c0ba2670, type: 2}

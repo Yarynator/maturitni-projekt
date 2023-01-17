@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 976db772799b7894bad8c58d5108ec1f, type: 3}
+  m_Name: PriestQuest
+  m_EditorClassIdentifier: 
+  nameString: Save The Restaurant
+  questIndex: 0
+  NPCSprite: {fileID: 21300030, guid: e48ddf4fb7304ce4ab48711eb6617a57, type: 3}
+  NPCName: Priest
+  talkList:
+  - firstTalkList:
+    - isPlayer: 1
+      text: Hey, are you priest?
+    - isPlayer: 0
+      text: Yes, thats me. Why?
+    - isPlayer: 1
+      text: So this chest is yours.
+    - isPlayer: 0
+      text: Oh, thank you so much. Are you adventurers?
+    - isPlayer: 1
+      text: Yes, do you need something?
+    - isPlayer: 0
+      text: Ehm... Yes. I heard there was something going on at the restaurant in
+        Fascuna. Can you check it out?
+    talkIfDone: []
+    talkIfNotDone:
+    - isPlayer: 0
+      text: Welcome, have you completed your quest?
+    - isPlayer: 1
+      text: Not yet, We are working on it.
+    - isPlayer: 0
+      text: So go to the restaurant in Fascuna and find out what is going on.
+    description: Go to the the restaurant in Fascuna and find out what is going on.
+  - firstTalkList:
+    - isPlayer: 1
+      text: Hey, are you priest?
+    - isPlayer: 0
+      text: Yes, thats me. Why?
+    - isPlayer: 1
+      text: So this is yours.
+    - isPlayer: 0
+      text: Oh, thank you so much. Are you adventurers?
+    - isPlayer: 1
+      text: Yes, do you need something?
+    - isPlayer: 0
+      text: Ehm... Yes. I heard there was something going on at the restaurant in
+        Fascuna. Can you check it out?
+    talkIfDone:
+    - isPlayer: 0
+      text: Welcome, have you completed your quest?
+    - isPlayer: 1
+      text: Yes, there was problem with chef.
+    - isPlayer: 0
+      text: Oh, thanks. There is yor reward.
+    talkIfNotDone:
+    - isPlayer: 0
+      text: Welcome, have you completed your quest?
+    - isPlayer: 1
+      text: Not yet, I'm working on it.
+    - isPlayer: 0
+      text: So go to the restaurant in Fascuna and find out what is going on.
+    description: Go back to the priest.
+  talkIfAcceptQuest:
+  - isPlayer: 0
+    text: Thank you. When you check it out, come back for your reward.
+  talkIfNotAcceptQuest:
+  - isPlayer: 0
+    text: Well, never mind. If you change your mind, come back.
+  talkIfComeBackAndHasNotAccepted:
+  - isPlayer: 0
+    text: Welcome, have you canged your mind? I need you to go check on the restaurant
+      in Fascuna.
+  question: Do you want to take a look at it?
+  rewardList: []
+  itemsNecessaryToAcceptQuest:
+  - {fileID: 11400000, guid: efdd8cd076344944eb3b000f4e0b5d7f, type: 2}
