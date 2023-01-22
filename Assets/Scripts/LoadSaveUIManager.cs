@@ -9,23 +9,27 @@ using UnityEngine.UI;
 public class LoadSaveUIManager : MonoBehaviour
 {
 
-    [SerializeField] private Transform canvas;
+    [SerializeField] private Button[] savesArray;
+    [SerializeField] private Transform mainMenuTransform;
+    [SerializeField] private Transform savesContainerTransform;
 
     private void Start()
     {
-        Debug.Log(Application.persistentDataPath);
-        Button[] buttonArray = canvas.GetComponentsInChildren<Button>();
+        savesContainerTransform.gameObject.SetActive(false);
+        mainMenuTransform.gameObject.SetActive(true);
 
-        for (int i = 0; i < buttonArray.Length; i++)
+        Debug.Log(Application.persistentDataPath);
+
+        for (int i = 0; i < savesArray.Length; i++)
         {
             string path = $"{Application.persistentDataPath}/save{i}/worldData.rpg";
             if (File.Exists(path))
             {
-                buttonArray[i].GetComponentInChildren<TextMeshProUGUI>().text = "Load This Save";
+                savesArray[i].GetComponentInChildren<TextMeshProUGUI>().text = "Load This Save";
             }
 
             int saveIndex = i;
-            buttonArray[i].onClick.AddListener(() =>
+            savesArray[i].onClick.AddListener(() =>
             {
                 PlayerPrefs.SetInt("Save", saveIndex);
                 if (File.Exists(path)) 
@@ -49,6 +53,23 @@ public class LoadSaveUIManager : MonoBehaviour
                 }
             });
         }
+    }
+
+    public void Play()
+    {
+        mainMenuTransform.gameObject.SetActive(false);
+        savesContainerTransform.gameObject.SetActive(true);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void Back()
+    {
+        mainMenuTransform.gameObject.SetActive(true);
+        savesContainerTransform.gameObject.SetActive(false);
     }
 
 }

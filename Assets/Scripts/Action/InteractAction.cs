@@ -168,6 +168,10 @@ public class InteractAction : BaseAction
                         SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 6, true, SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
                         SceneManager.LoadScene(5);
                     }
+                    else
+                    {
+                        WorldTextManager.Instance.CreateWorldText(MouseWorld.Instance.GetWorldPosition(), "You can not leave restaurant while you are fighting!");
+                    }
                     break;
                 case Interactable.InteractableType.PriestChest:
 

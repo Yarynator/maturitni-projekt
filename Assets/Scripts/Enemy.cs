@@ -81,7 +81,9 @@ public class Enemy : MonoBehaviour, Entity
         health.UpdateBar();
 
         if (health.GetHealth() <= 0) {
-            LevelGrid.Instance.GetGridObject(LevelGrid.Instance.GetGridPosition(transform.position)).SetEntity(null);
+            GridPosition gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+            LevelGrid.Instance.GetGridObject(gridPosition).SetEntity(null);
+            Pathfinding.Instance.GetNode(gridPosition.x, gridPosition.y).SetIsWalkable(true);
             EnemyManager.Instance.RemoveEnemyFromList(this);
             if (BattleManager.Instance.IsBattle())
             {
@@ -89,6 +91,7 @@ public class Enemy : MonoBehaviour, Entity
                 BattleManager.Instance.SetLastDeadEnemyPosition(LevelGrid.Instance.GetGridPosition(transform.position));
             }
             Destroy(gameObject);
+            GridSystemVisual.Instance.ReloadGridPositionList(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList());
             OnAnyEnemyDies?.Invoke(this, EventArgs.Empty);
         }
     }

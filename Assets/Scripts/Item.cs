@@ -30,6 +30,7 @@ public class Item : ItemBase, Entity, Interactable
         GridPosition gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         Pathfinding.Instance.GetNode(gridPosition.x, gridPosition.y).SetIsWalkable(true);
         LevelGrid.Instance.GetGridObject(gridPosition).SetEntity(null);
+        GridSystemVisual.Instance.ReloadGridPositionList(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList());
         Destroy(gameObject);
     }
 

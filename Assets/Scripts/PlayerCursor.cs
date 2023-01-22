@@ -40,15 +40,21 @@ public class PlayerCursor : MonoBehaviour
                     {
                         if(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetActionType() == ActionType.Attack && BattleManager.Instance.CanUseAttack())
                         {
-                            ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).TakeAction(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition()), () => { });
-                            BattleManager.Instance.UseAttack();
-                            BattleInfoUI.Instance.SetAttackVisibility(false);
+                            if (ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList().Contains(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition())))
+                            {
+                                ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).TakeAction(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition()), () => { });
+                                BattleManager.Instance.UseAttack();
+                                BattleInfoUI.Instance.SetAttackVisibility(false);
+                            }
                         }
                         else if(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetActionType() == ActionType.Magic && BattleManager.Instance.CanUseMagic())
                         {
-                            ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).TakeAction(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition()), () => { });
-                            BattleManager.Instance.UseMagic();
-                            BattleInfoUI.Instance.SetMagicVisibility(false);
+                            if (ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList().Contains(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition())))
+                            {
+                                ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).TakeAction(LevelGrid.Instance.GetGridPosition(MouseWorld.Instance.GetWorldPosition()), () => { });
+                                BattleManager.Instance.UseMagic();
+                                BattleInfoUI.Instance.SetMagicVisibility(false);
+                            }
                         }
                         else if(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetActionType() == ActionType.Move)
                         {

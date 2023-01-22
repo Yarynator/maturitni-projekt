@@ -30,6 +30,8 @@ public class GridSystemVisual : MonoBehaviour
 
     private GridSystemVisualSingle[,] gridSystemVisualSingleArray;
 
+    private GridVisualType lastGridVisualType;
+
     private void Awake()
     {
         if (Instance != null)
@@ -66,10 +68,24 @@ public class GridSystemVisual : MonoBehaviour
 
     public void ShowGridPositionList(List<GridPosition> gridPositionList, GridVisualType gridVisualType)
     {
-        foreach (GridPosition gridPosition in gridPositionList)
+        if (PlayerManager.Instance.GetActualPlayer() != null)
         {
-            gridSystemVisualSingleArray[gridPosition.x, gridPosition.y].Show(GetGridVisualTypeColor(gridVisualType));
+            foreach (GridPosition gridPosition in gridPositionList)
+            {
+                gridSystemVisualSingleArray[gridPosition.x, gridPosition.y].Show(GetGridVisualTypeColor(gridVisualType));
+            }
+            lastGridVisualType = gridVisualType;
+        } 
+        else
+        {
+            HideAllGridPosition();
         }
+    }
+
+    public void ReloadGridPositionList(List<GridPosition> gridPositionList)
+    {
+        HideAllGridPosition();
+        ShowGridPositionList(gridPositionList, lastGridVisualType);
     }
 
     private Color GetGridVisualTypeColor(GridVisualType gridVisualType)

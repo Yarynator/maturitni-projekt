@@ -202,13 +202,16 @@ public class Player : MonoBehaviour, Entity
 
         if(health.GetHealth() <= 0)
         {
-            LevelGrid.Instance.GetGridObject(LevelGrid.Instance.GetGridPosition(transform.position)).SetEntity(null);
+            GridPosition gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+            LevelGrid.Instance.GetGridObject(gridPosition).SetEntity(null);
+            Pathfinding.Instance.GetNode(gridPosition.x, gridPosition.y).SetIsWalkable(true);
             PlayerManager.Instance.RemovePlayer(this);
             Destroy(gameObject);
             if (BattleManager.Instance.IsBattle())
             {
                 BattleManager.Instance.RemoveEntityFromBattleOrderList(this);
             }
+            GridSystemVisual.Instance.ReloadGridPositionList(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList());
             OnAnyPlayerDies?.Invoke(this, EventArgs.Empty);
         }
     }

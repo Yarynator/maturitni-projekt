@@ -57,6 +57,16 @@ public class EscapeMenu : MonoBehaviour
 
         exitAnywayBtn.onClick.AddListener(() =>
         {
+            PlayerData[] playerDataArray = new PlayerData[PlayerManager.Instance.GetPlayerList().Count];
+
+            for (int i = 0; i < playerDataArray.Length; i++)
+            {
+                Player player = PlayerManager.Instance.GetPlayerList()[i];
+                playerDataArray[i] = new PlayerData(-1, -1, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
+            }
+
+            SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 5, true, SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+
             SceneManager.LoadScene(0);
         });
     }

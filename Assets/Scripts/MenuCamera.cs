@@ -13,6 +13,7 @@ public class MenuCamera : MonoBehaviour
     private void Start()
     {
         currentMapIndex = 0;
+        Time.timeScale = 1f;
     }
 
     private void Update()
