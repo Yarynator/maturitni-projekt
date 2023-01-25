@@ -48,7 +48,7 @@ public class LoadSaveUIManager : MonoBehaviour
 
                     ActiveQuestsData questsData = new ActiveQuestsData(false, false, false, 0, true);
                     ObjectsData objectsData = new ObjectsData(false, false, new GridPosition(), false, new GridPosition());
-                    SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), 1, -1, false, true, false, questsData, objectsData);
+                    SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), 1, -1, false, true, 0, true, false, questsData, objectsData);
                     SceneManager.LoadScene(1);
                 }
             });

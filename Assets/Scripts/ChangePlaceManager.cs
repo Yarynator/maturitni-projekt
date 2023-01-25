@@ -137,7 +137,7 @@ public class ChangePlaceManager : MonoBehaviour
                 Player player = PlayerManager.Instance.GetPlayerList()[i];
                 playerDataArray[i] = new PlayerData(0, 0, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
             }
-            SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), changePlace.GetSceneIndex(), SceneInfo.Instance.GetSceneIndex(), false, SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+            SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), changePlace.GetSceneIndex(), SceneInfo.Instance.GetSceneIndex(), false, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
             SceneManager.LoadScene(changePlace.GetSceneIndex());
         }
     }

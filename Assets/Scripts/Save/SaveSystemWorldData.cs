@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystemWorldData 
 {
     
-    public static void SaveData(PlayerData[] playerList, int saveIndex, int sceneIndex, int fromSceneIndex, bool insideBuilding, bool tutorialBattleIsActive, bool priestRestaurantBattleIsActive, ActiveQuestsData questData, ObjectsData objectsData)
+    public static void SaveData(PlayerData[] playerList, int saveIndex, int sceneIndex, int fromSceneIndex, bool insideBuilding, bool isTutorial, int tutorialIndex, bool tutorialBattleIsActive, bool priestRestaurantBattleIsActive, ActiveQuestsData questData, ObjectsData objectsData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         if (!Directory.Exists($"{Application.persistentDataPath}/save{saveIndex}"))
@@ -18,7 +18,7 @@ public static class SaveSystemWorldData
         using (FileStream stream = new FileStream(path, FileMode.Create))
         {
             //GameObject bush = GameObject.Find("TileDoorClosedMiddle");
-            WorldData data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, tutorialBattleIsActive, priestRestaurantBattleIsActive);
+            WorldData data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, isTutorial, tutorialIndex, tutorialBattleIsActive, priestRestaurantBattleIsActive);
 
             /*if(SceneInfo.Instance.GetSceneIndex() == 0)
             {

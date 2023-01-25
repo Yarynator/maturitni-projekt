@@ -149,7 +149,7 @@ public class InteractAction : BaseAction
                             playerDataArray[i] = new PlayerData(-1, -1, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
                         }
 
-                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 5, true, SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 5, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
                         SceneManager.LoadScene(6);
                     }
                     break;
@@ -165,7 +165,7 @@ public class InteractAction : BaseAction
                             playerDataArray[i] = new PlayerData(-1, -1, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
                         }
 
-                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 6, true, SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 6, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
                         SceneManager.LoadScene(5);
                     }
                     else

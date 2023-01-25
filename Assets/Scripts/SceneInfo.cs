@@ -14,6 +14,10 @@ public class SceneInfo : MonoBehaviour
 
     private bool insideBuilding;
 
+    private bool isTutorial;
+
+    private int tutorialIndex;
+
     private bool tutorialBattleIsActive;
     private bool priestRestaurantBattleIsActive;
 
@@ -43,6 +47,7 @@ public class SceneInfo : MonoBehaviour
             insideBuilding = worldData.insideBuilding;
             tutorialBattleIsActive = worldData.tutorialBattleIsActive;
             priestRestaurantBattleIsActive = worldData.priestRestaurantBattleIsActive;
+            isTutorial = worldData.isTutorial;
         }
     }
 
@@ -112,6 +117,22 @@ public class SceneInfo : MonoBehaviour
     public ObjectsData GetObjectsData()
     {
         return objectsData;
+    }
+
+    public bool IsTutorial(){
+        return isTutorial;
+    }
+
+    public void SetIsTutorial(bool isTutorial){
+        this.isTutorial = isTutorial;
+    }
+
+    public int GetTutorialIndex(){
+        return sceneIndex;
+    }
+
+    public void SetTutorialIndex(int tutorialIndex){
+        this.tutorialIndex = tutorialIndex;
     }
 
 }
