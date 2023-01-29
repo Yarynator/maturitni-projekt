@@ -27,6 +27,15 @@ public class Item : ItemBase, Entity, Interactable
 
     public void Damage(int damage, Entity sender)
     {
+
+        if (SceneInfo.Instance.IsTutorial())
+        {
+            if (SceneInfo.Instance.GetTutorialIndex() == 17)
+            {
+                TutorialUI.Instance.AddIndex();
+            }
+        }
+
         GridPosition gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         Pathfinding.Instance.GetNode(gridPosition.x, gridPosition.y).SetIsWalkable(true);
         LevelGrid.Instance.GetGridObject(gridPosition).SetEntity(null);

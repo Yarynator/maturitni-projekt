@@ -64,6 +64,8 @@ public class BattleManager : MonoBehaviour
         {
             if (isPlayerSetuped)
             {
+
+
                 Entity currentEntityRound = battleOrderList[currentEntityRoundIndex];
 
                 if (!isPlaying)
@@ -91,6 +93,14 @@ public class BattleManager : MonoBehaviour
                         EnemyAI.Instance.SetTurn(currentEntityRound as Enemy);
                     }
                     isPlaying = true;
+                }
+
+                if (SceneInfo.Instance.IsTutorial())
+                {
+                    if (SceneInfo.Instance.GetTutorialIndex() == 11)
+                    {
+                        TutorialUI.Instance.AddIndex();
+                    }
                 }
             }
             else
@@ -213,10 +223,13 @@ public class BattleManager : MonoBehaviour
                 {
                     case 0:
                         SceneInfo.Instance.SetTutorialBattleIsActive(false);
-                        Instantiate(Resources.Load<Item>("Chest"), LevelGrid.Instance.GetWorldPosition(lastDeadEnemyPosition), Quaternion.identity);
+                        Item item = Instantiate(Resources.Load<Item>("Chest"), LevelGrid.Instance.GetWorldPosition(lastDeadEnemyPosition), Quaternion.identity);
+                        item.gameObject.name = "ChestItem";
                         SceneInfo.Instance.GetObjectsData().priestChestIsActive = true;
                         SceneInfo.Instance.GetObjectsData().priestChestXPosition = lastDeadEnemyPosition.x;
                         SceneInfo.Instance.GetObjectsData().priestChestYPosition = lastDeadEnemyPosition.y;
+
+                        TutorialUI.Instance.AddIndex();
                         break;
                     case 1:
                         SceneInfo.Instance.SetPriestRestaurantIsActive(false);
@@ -271,6 +284,16 @@ public class BattleManager : MonoBehaviour
     public void SetLastDeadEnemyPosition(GridPosition enemyPosition)
     {
         lastDeadEnemyPosition = enemyPosition;
+    }
+
+    public List<Entity> GetBattleOrderList()
+    {
+        return battleOrderList;
+    }
+
+    public bool FirstInListIsEnemy()
+    {
+        return battleOrderList[0].IsEnemy();
     }
 
 }

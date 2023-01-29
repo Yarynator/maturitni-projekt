@@ -53,8 +53,9 @@ public class PlayerManager : MonoBehaviour
         if (player != null)
         {
             PlayerInfo.Instance.Show(player);
-            BaseAction[] actions = player.GetComponents<BaseAction>();
-            ActionsUI.Instance.Show(actions);
+
+            ShowActions();
+            
             CameraMovement.Instance.transform.position = player.transform.position;
             player.GetPlayerListSingle().Find("selected").gameObject.SetActive(true);
         } 
@@ -70,6 +71,12 @@ public class PlayerManager : MonoBehaviour
     public Player GetActualPlayer()
     {
         return actualPlayer;
+    }
+
+    public void ShowActions()
+    {
+        BaseAction[] actions = actualPlayer.GetComponents<BaseAction>();
+        ActionsUI.Instance.Show(actions);
     }
 
 }

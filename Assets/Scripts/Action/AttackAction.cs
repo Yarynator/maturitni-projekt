@@ -48,7 +48,11 @@ public class AttackAction : BaseAction
                     }
                     else if (TryGetComponent<Enemy>(out Enemy enemy))
                     {
-                        LevelGrid.Instance.GetGridObject(endGridPosition).GetEntity().Damage(enemy.GetAttack(), player);
+                        try
+                        {
+                            LevelGrid.Instance.GetGridObject(endGridPosition).GetEntity().Damage(enemy.GetAttack(), enemy);
+                        }
+                        catch { }
                     }
                     state = State.AttackEnd;
                     break;

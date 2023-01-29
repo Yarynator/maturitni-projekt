@@ -211,8 +211,14 @@ public class Player : MonoBehaviour, Entity
             {
                 BattleManager.Instance.RemoveEntityFromBattleOrderList(this);
             }
-            GridSystemVisual.Instance.ReloadGridPositionList(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList());
+            //GridSystemVisual.Instance.ReloadGridPositionList(ActionManager.Instance.GetActualAction(PlayerManager.Instance.GetActualPlayer()).GetValidActionGridPositionList());
             OnAnyPlayerDies?.Invoke(this, EventArgs.Empty);
+        }
+
+        Debug.Log(PlayerManager.Instance.GetPlayerList().Count);
+        if(PlayerManager.Instance.GetPlayerList().Count == 0)
+        {
+            GameOverUI.Instance.Show();
         }
     }
 

@@ -39,6 +39,14 @@ public class PlayerInfo : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        if (SceneInfo.Instance.IsTutorial())
+        {
+            if(SceneInfo.Instance.GetTutorialIndex() == 2)
+            {
+                TutorialUI.Instance.AddIndex();
+            }
+        }
+
         playerImage.sprite = player.GetSprite();
         nameText.text = "Name: " + player.GetName();
         levelText.text = "Level: " + player.GetLevel();

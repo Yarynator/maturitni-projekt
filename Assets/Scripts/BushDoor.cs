@@ -47,6 +47,8 @@ public class BushDoor : MonoBehaviour, Entity
         SceneInfo.Instance.SetTutorialBushIsDestroyed(true);
 
         Destroy(this);
+
+        TutorialUI.Instance.AddIndex();
     }
 
     public int GetMaxMoveDistance()

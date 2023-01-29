@@ -69,8 +69,19 @@ public class ChangePlaceManager : MonoBehaviour
                                     {
                                         if (!BattleManager.Instance.IsBattle())
                                         {
+                                            if (SceneInfo.Instance.IsTutorial())
+                                            {
+                                                if(SceneInfo.Instance.GetTutorialIndex() == 17)
+                                                {
+
+                                                    WorldTextManager.Instance.CreateWorldText(MouseWorld.Instance.GetWorldPosition(), "You should listen to the tutorial");
+                                                    return;
+                                                }
+                                            }
+
                                             this.changePlace = changePlace;
                                             changedPlayerPlaceList = new List<Player>();
+                                            TutorialUI.Instance.AddIndex();
 
                                             LevelGrid.Instance.GetGridObject(changePlace.GetSceneData().spawnGridPosition).SetEntity(null);
                                             Pathfinding.Instance.SetIsWalkableGridPosition(changePlace.GetSceneData().spawnGridPosition, true);

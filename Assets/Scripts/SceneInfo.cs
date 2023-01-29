@@ -48,6 +48,7 @@ public class SceneInfo : MonoBehaviour
             tutorialBattleIsActive = worldData.tutorialBattleIsActive;
             priestRestaurantBattleIsActive = worldData.priestRestaurantBattleIsActive;
             isTutorial = worldData.isTutorial;
+            tutorialIndex = worldData.tutorialIndex;
         }
     }
 
@@ -128,7 +129,7 @@ public class SceneInfo : MonoBehaviour
     }
 
     public int GetTutorialIndex(){
-        return sceneIndex;
+        return tutorialIndex;
     }
 
     public void SetTutorialIndex(int tutorialIndex){
