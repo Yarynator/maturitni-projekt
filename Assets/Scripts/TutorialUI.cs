@@ -30,10 +30,7 @@ public class TutorialUI : MonoBehaviour
 
     private void Start()
     {
-        if (!SceneInfo.Instance.IsTutorial())
-        {
-            gameObject.SetActive(false);
-        }
+        HideAll();
 
         button.onClick.AddListener(() =>
         {
@@ -50,10 +47,15 @@ public class TutorialUI : MonoBehaviour
         button.gameObject.SetActive(true);
     }
 
-    public void Hide()
+    public void HideAll()
     {
         background.gameObject.SetActive(false);
         text.gameObject.SetActive(false);
+        continueText.gameObject.SetActive(false);
+        button.gameObject.SetActive(false);
+    }
+
+    public void HideClick(){
         continueText.gameObject.SetActive(false);
         button.gameObject.SetActive(false);
     }

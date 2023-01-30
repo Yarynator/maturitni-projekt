@@ -61,6 +61,7 @@ public class TutorialManager : MonoBehaviour
     private void RunTutorial()
     {
         tutorialIndex = SceneInfo.Instance.GetTutorialIndex();
+        Debug.Log(tutorialIndex);
 
         if (tutorialDataList.Count > tutorialIndex)
         {
@@ -77,16 +78,14 @@ public class TutorialManager : MonoBehaviour
             case 1:
                 arrowList[0].gameObject.SetActive(true);
                 arrowList[1].gameObject.SetActive(true);
+                TutorialUI.Instance.HideClick();
                 break;
             case 2:
-                TutorialUI.Instance.Hide();
-                break;
-            case 3:
                 arrowList[0].gameObject.SetActive(false);
                 arrowList[1].gameObject.SetActive(false);
                 arrowList[2].gameObject.SetActive(true);
                 break;
-            case 4:
+            case 3:
                 arrowList[2].gameObject.SetActive(false);
                 foreach (GameObject go in tutorialDataList[tutorialIndex - 1].hiddenGameobjects)
                 {
@@ -99,7 +98,7 @@ public class TutorialManager : MonoBehaviour
 
                 PlayerManager.Instance.ShowActions();
                 break;
-            case 5:
+            case 4:
                 arrowList[3].gameObject.SetActive(false);
                 foreach (GameObject go in tutorialDataList[tutorialIndex - 1].hiddenGameobjects)
                 {
@@ -111,25 +110,24 @@ public class TutorialManager : MonoBehaviour
                 arrowList[4].gameObject.SetActive(true);
 
                 break;
-            case 6:
+            case 5:
                 arrowList[4].gameObject.SetActive(false);
                 break;
-            case 7:
+            case 6:
                 arrowList[5].gameObject.SetActive(true);
+                TutorialUI.Instance.HideClick();
+                cameraFollow.position = new Vector3(14, 12);
                 break;
-            case 8:
-                TutorialUI.Instance.Hide();
-                break;
-            case 9:
+            case 7:
                 arrowList[5].gameObject.SetActive(false);
                 arrowList[6].gameObject.SetActive(true);
                 cameraFollow.transform.position = new Vector3(15, 15);
+                TutorialUI.Instance.HideClick();
                 break;
-            case 10:
-            case 11:
-                TutorialUI.Instance.Hide();
+            case 8:
+                TutorialUI.Instance.HideAll();
                 break;
-            case 12:
+            case 9:
                 Time.timeScale = 0f;
 
                 List<string> battleOrder = new List<string>();
@@ -160,7 +158,7 @@ public class TutorialManager : MonoBehaviour
 
                 TutorialUI.Instance.Show(ret);
                 break;
-            case 13:
+            case 10:
                 arrowList[0].gameObject.SetActive(true);
                 foreach (GameObject go in tutorialDataList[tutorialIndex - 1].hiddenGameobjects)
                 {
@@ -171,12 +169,12 @@ public class TutorialManager : MonoBehaviour
                 }
 
                 break;
-            case 14:
+            case 11:
                 arrowList[0].gameObject.SetActive(false);
                 arrowList[1].gameObject.SetActive(true);
                 tutorialDataList[tutorialIndex - 1].hiddenGameobjects[0].gameObject.SetActive(true);
                 break;
-            case 15:
+            case 12:
                 if (BattleManager.Instance.FirstInListIsEnemy())
                 {
                     foreach (GameObject go in tutorialDataList[tutorialIndex - 3].hiddenGameobjects)
@@ -188,28 +186,27 @@ public class TutorialManager : MonoBehaviour
                 }
                 arrowList[1].gameObject.SetActive(false);
                 Time.timeScale = 1f;
-                TutorialUI.Instance.Hide();
+                TutorialUI.Instance.HideAll();
                 break;
-            case 16:
+            case 13:
                 Vector3 arrowPosition = GameObject.Find("ChestItem").transform.position;
                 arrowPosition.x -= 1f;
                 arrowList[2].transform.position = arrowPosition;
                 arrowList[2].gameObject.SetActive(true);
+                TutorialUI.Instance.HideClick();
                 break;
-            case 17:
-                TutorialUI.Instance.Hide();
-                break;
-            case 18:
+            case 14:
                 arrowList[2].gameObject.SetActive(false);
                 arrowList[3].gameObject.SetActive(true);
                 tutorialDataList[tutorialIndex - 1].hiddenGameobjects[0].gameObject.SetActive(true);
+                TutorialUI.Instance.HideClick();
                 break;
-            case 19:
+            case 15:
                 arrowList[3].gameObject.SetActive(false);
                 break;
-            case 20:
+            case 16:
                 SceneInfo.Instance.SetIsTutorial(false);
-                TutorialUI.Instance.Hide();
+                TutorialUI.Instance.HideAll();
                 break;
         }
     }

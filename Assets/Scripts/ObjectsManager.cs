@@ -15,7 +15,8 @@ public class ObjectsManager : MonoBehaviour
             case 2:
                 if(objectsData.priestChestIsActive)
                 {
-                    Instantiate(Resources.Load<Item>("Chest"), LevelGrid.Instance.GetWorldPosition(new GridPosition(objectsData.priestChestXPosition, objectsData.priestChestYPosition)), Quaternion.identity);
+                    Item item = Instantiate(Resources.Load<Item>("Chest"), LevelGrid.Instance.GetWorldPosition(new GridPosition(objectsData.priestChestXPosition, objectsData.priestChestYPosition)), Quaternion.identity);
+                    item.name = "ChestItem";
                 }
                 break;
             case 6:

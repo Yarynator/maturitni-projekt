@@ -155,6 +155,12 @@ public class InventoryUI : MonoBehaviour
         armorTransform.gameObject.SetActive(true);
         inventoryItemsTransform.gameObject.SetActive(true);
 
+        if(SceneInfo.Instance.IsTutorial()){
+            if(SceneInfo.Instance.GetTutorialIndex() == 14) {
+                TutorialUI.Instance.AddIndex();
+            }
+        }
+
 
         if (player.GetInventory().GetItemsInInventory()[4] != null)
         {

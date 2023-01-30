@@ -41,7 +41,7 @@ public class PlayerInfo : MonoBehaviour
 
         if (SceneInfo.Instance.IsTutorial())
         {
-            if(SceneInfo.Instance.GetTutorialIndex() == 2)
+            if(SceneInfo.Instance.GetTutorialIndex() == 1)
             {
                 TutorialUI.Instance.AddIndex();
             }

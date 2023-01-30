@@ -71,7 +71,7 @@ public class ChangePlaceManager : MonoBehaviour
                                         {
                                             if (SceneInfo.Instance.IsTutorial())
                                             {
-                                                if(SceneInfo.Instance.GetTutorialIndex() == 17)
+                                                if(SceneInfo.Instance.GetTutorialIndex() == 13)
                                                 {
 
                                                     WorldTextManager.Instance.CreateWorldText(MouseWorld.Instance.GetWorldPosition(), "You should listen to the tutorial");

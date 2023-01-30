@@ -30,7 +30,7 @@ public class Item : ItemBase, Entity, Interactable
 
         if (SceneInfo.Instance.IsTutorial())
         {
-            if (SceneInfo.Instance.GetTutorialIndex() == 17)
+            if (SceneInfo.Instance.GetTutorialIndex() == 13)
             {
                 TutorialUI.Instance.AddIndex();
             }

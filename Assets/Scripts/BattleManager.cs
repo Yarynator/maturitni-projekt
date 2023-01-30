@@ -97,7 +97,7 @@ public class BattleManager : MonoBehaviour
 
                 if (SceneInfo.Instance.IsTutorial())
                 {
-                    if (SceneInfo.Instance.GetTutorialIndex() == 11)
+                    if (SceneInfo.Instance.GetTutorialIndex() == 8)
                     {
                         TutorialUI.Instance.AddIndex();
                     }

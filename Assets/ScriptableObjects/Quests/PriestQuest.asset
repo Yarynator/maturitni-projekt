@@ -19,17 +19,17 @@ MonoBehaviour:
   talkList:
   - firstTalkList:
     - isPlayer: 1
-      text: Hey, are you priest?
+      text: Hey, are you the priest?
     - isPlayer: 0
-      text: Yes, thats me. Why?
+      text: Yes my child, thats me. Why are you asking?
     - isPlayer: 1
-      text: So this chest is yours.
+      text: So, this treasure chest is yours.
     - isPlayer: 0
-      text: Oh, thank you so much. Are you adventurers?
+      text: Thank you very much. You seem like adventurers. Can I ask you a question?
     - isPlayer: 1
-      text: Yes, do you need something?
+      text: Yes, what can I do for you?
     - isPlayer: 0
-      text: Ehm... Yes. I heard there was something going on at the restaurant in
+      text: Ehm... I heard that there was something going on at the restaurant in
         Fascuna. Can you check it out?
     talkIfDone: []
     talkIfNotDone:
@@ -42,25 +42,24 @@ MonoBehaviour:
     description: Go to the the restaurant in Fascuna and find out what is going on.
   - firstTalkList:
     - isPlayer: 1
-      text: Hey, are you priest?
+      text: Hey, are you the priest?
     - isPlayer: 0
-      text: Yes, thats me. Why?
+      text: Yes my child, thats me. Why are you asking?
     - isPlayer: 1
-      text: So this is yours.
+      text: So, this treasure chest is yours.
     - isPlayer: 0
-      text: Oh, thank you so much. Are you adventurers?
+      text: Thank you very much. You seem like adventurers. Can I ask you a question?
     - isPlayer: 1
-      text: Yes, do you need something?
+      text: Thank you very much. You seem like adventurers. Can I ask you a question?
     - isPlayer: 0
-      text: Ehm... Yes. I heard there was something going on at the restaurant in
-        Fascuna. Can you check it out?
+      text: Thank you very much. You seem like adventurers. Can I ask you a question?
     talkIfDone:
     - isPlayer: 0
       text: Welcome, have you completed your quest?
     - isPlayer: 1
-      text: Yes, there was problem with chef.
+      text: Yes, there was problem with chefs.
     - isPlayer: 0
-      text: Oh, thanks. There is yor reward.
+      text: Oh, thanks. There is your reward.
     talkIfNotDone:
     - isPlayer: 0
       text: Welcome, have you completed your quest?
@@ -71,15 +70,15 @@ MonoBehaviour:
     description: Go back to the priest.
   talkIfAcceptQuest:
   - isPlayer: 0
-    text: Thank you. When you check it out, come back for your reward.
+    text: Thank you. After completing the task, come and collect your reward.
   talkIfNotAcceptQuest:
   - isPlayer: 0
     text: Well, never mind. If you change your mind, come back.
   talkIfComeBackAndHasNotAccepted:
   - isPlayer: 0
-    text: Welcome, have you canged your mind? I need you to go check on the restaurant
+    text: Welcome, have you changed your mind? I need you to go check on the restaurant
       in Fascuna.
-  question: Do you want to take a look at it?
+  question: Do you want to check it out?
   rewardList: []
   itemsNecessaryToAcceptQuest:
   - {fileID: 11400000, guid: efdd8cd076344944eb3b000f4e0b5d7f, type: 2}
