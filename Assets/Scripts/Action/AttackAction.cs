@@ -36,7 +36,7 @@ public class AttackAction : BaseAction
                     if(Vector2.Distance(transform.position, LevelGrid.Instance.GetWorldPosition(endGridPosition)) < .1f){
                         state = State.Attack;
                     }
-                    if(Vector2.Distance(transform.position, LevelGrid.Instance.GetWorldPosition(endGridPosition)) > 2f)
+                    if(Vector2.Distance(transform.position, LevelGrid.Instance.GetWorldPosition(endGridPosition)) > Mathf.Sqrt(2))
                     {
                         state = State.Attack;
                     }
