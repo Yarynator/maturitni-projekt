@@ -53,6 +53,23 @@ public class TutorialManager : MonoBehaviour
         RunTutorial();
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)){
+            if(tutorialIndex == 14)
+            {
+                if(PlayerManager.Instance.GetActualPlayer() == null)
+                {
+                    TutorialUI.Instance.ShowWithoutButton("Click on a player to see his inventory");
+                } 
+                else
+                {
+                    TutorialUI.Instance.ShowWithoutButton("All the items your character has in his inventory are listed here.");
+                }
+            }
+        }
+    }
+
     private void Instance_OnNextTutorialStep(object sender, EventArgs e)
     {
         RunTutorial();

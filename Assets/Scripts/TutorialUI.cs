@@ -47,6 +47,13 @@ public class TutorialUI : MonoBehaviour
         button.gameObject.SetActive(true);
     }
 
+    public void ShowWithoutButton(string text)
+    {
+        background.gameObject.SetActive(true);
+        this.text.gameObject.SetActive(true);
+        this.text.text = text;
+    }
+
     public void HideAll()
     {
         background.gameObject.SetActive(false);
