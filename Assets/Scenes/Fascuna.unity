@@ -6735,6 +6735,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 176748312202555482, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: musicList
+      value: 
+      objectReference: {fileID: 11400000, guid: b589576d47eb25c42841cbe2a67965ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
 --- !u!1001 &869915334

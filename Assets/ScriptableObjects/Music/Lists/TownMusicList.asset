@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fe36715ea7c6e40bc0dcb4debaff6a, type: 3}
+  m_Name: TownMusicList
+  m_EditorClassIdentifier: 
+  musicType: 2
+  list:
+  - {fileID: 11400000, guid: cb97eed5dd40b064b8db9d065b137587, type: 2}
+  - {fileID: 11400000, guid: 8db2285d966c9e845b7a66c4e17b8c87, type: 2}
+  - {fileID: 11400000, guid: 45a409f01e8e3db439b9c0d2e89cd5e8, type: 2}

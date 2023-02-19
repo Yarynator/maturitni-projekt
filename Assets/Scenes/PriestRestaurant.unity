@@ -2449,6 +2449,18 @@ PrefabInstance:
       propertyPath: sceneIndex
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 54521787094706080, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: gridVisualTypeColorList.Array.data[2].color.b
+      value: 0.06132078
+      objectReference: {fileID: 0}
+    - target: {fileID: 54521787094706080, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: gridVisualTypeColorList.Array.data[2].color.g
+      value: 0.59587014
+      objectReference: {fileID: 0}
+    - target: {fileID: 54521787094706080, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: gridVisualTypeColorList.Array.data[2].color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 54521787135912516, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
       propertyPath: width
       value: 15
@@ -2485,6 +2497,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0.18039216
       objectReference: {fileID: 0}
+    - target: {fileID: 176748312202555482, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: musicList
+      value: 
+      objectReference: {fileID: 11400000, guid: b589576d47eb25c42841cbe2a67965ca, type: 2}
     - target: {fileID: 3841603390376492583, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
       propertyPath: m_Size.x
       value: 12.918358

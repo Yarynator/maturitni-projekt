@@ -8,6 +8,7 @@ TagManager:
   - LargeTile
   - LevelChanger
   - inventoryItem
+  - inventoryTooltip
   layers:
   - Default
   - TransparentFX

@@ -19,8 +19,12 @@ public class WorldData
     public bool tutorialBattleIsActive; //index 0
     public bool priestRestaurantBattleIsActive; //index 1
 
+    public int musicType;
+    public int musicIndex;
+    public float musicTime;
 
-    public WorldData(int playerAmount, int sceneIndex, int fromSceneIndex, bool insideBuilding, bool isTutorial, int tutorialIndex, bool tutorialBattleIsActive, bool priestRestaurantBattleIsActive)
+
+    public WorldData(int playerAmount, int sceneIndex, int fromSceneIndex, bool insideBuilding, bool isTutorial, int tutorialIndex, bool tutorialBattleIsActive, bool priestRestaurantBattleIsActive, int musicType, int musicIndex, float musicTime)
     {
         this.playerAmount = playerAmount;
         this.sceneIndex = sceneIndex;
@@ -31,5 +35,9 @@ public class WorldData
 
         this.tutorialBattleIsActive = tutorialBattleIsActive;
         this.priestRestaurantBattleIsActive = priestRestaurantBattleIsActive;
+
+        this.musicType = musicType;
+        this.musicIndex = musicIndex;
+        this.musicTime = musicTime;
     }
 }

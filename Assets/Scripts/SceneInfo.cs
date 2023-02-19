@@ -11,6 +11,7 @@ public class SceneInfo : MonoBehaviour
     [SerializeField] private int sceneIndex;
     [SerializeField] private NPCMoveMapInSceneListSO npcMoveMapInSceneList;
     private int battleIndex;
+    private int fromSceneIndex;
 
     private bool insideBuilding;
 
@@ -23,6 +24,7 @@ public class SceneInfo : MonoBehaviour
 
     private ActiveQuestsData questData;
     private ObjectsData objectsData;
+    private MusicManager.MusicSaveData musicSaveData;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class SceneInfo : MonoBehaviour
             WorldData worldData = SaveSystemWorldData.LoadWorldData(PlayerPrefs.GetInt("Save"));
             questData = SaveSystemWorldData.LoadQuestData(PlayerPrefs.GetInt("Save"));
             objectsData = SaveSystemWorldData.LoadObjectData(PlayerPrefs.GetInt("Save"));
+            musicSaveData = new MusicManager.MusicSaveData(worldData.musicType, worldData.musicIndex, worldData.musicTime, worldData.fromSceneIndex);
             for (int i = 0; i < worldData.playerAmount; i++)
             {
                 PlayerData playerData = SaveSystemWorldData.LoadPlayerData(PlayerPrefs.GetInt("Save"), i);
@@ -49,12 +52,18 @@ public class SceneInfo : MonoBehaviour
             priestRestaurantBattleIsActive = worldData.priestRestaurantBattleIsActive;
             isTutorial = worldData.isTutorial;
             tutorialIndex = worldData.tutorialIndex;
+            fromSceneIndex = worldData.fromSceneIndex;
         }
     }
 
     public int GetSceneIndex()
     {
         return sceneIndex;
+    }
+
+    public int ComeFromSceneIndex()
+    {
+        return fromSceneIndex;
     }
 
     public int GetBattleIndex()
@@ -118,6 +127,11 @@ public class SceneInfo : MonoBehaviour
     public ObjectsData GetObjectsData()
     {
         return objectsData;
+    }
+
+    public MusicManager.MusicSaveData GetMusicSaveData()
+    {
+        return musicSaveData;
     }
 
     public bool IsTutorial(){

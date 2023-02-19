@@ -13,13 +13,28 @@ public class LoadSaveUIManager : MonoBehaviour
     [SerializeField] private Button[] removeSaveArray;
     [SerializeField] private Transform mainMenuTransform;
     [SerializeField] private Transform savesContainerTransform;
+    [SerializeField] private Transform settingsTransform;
+    [SerializeField] private Slider musicSlider;
 
     private void Start()
     {
         savesContainerTransform.gameObject.SetActive(false);
         mainMenuTransform.gameObject.SetActive(true);
+        settingsTransform.gameObject.SetActive(false);
+
+        if (!PlayerPrefs.HasKey("Music"))
+        {
+            PlayerPrefs.SetFloat("Music", .5f);
+        }
+        musicSlider.value = PlayerPrefs.GetFloat("Music");
 
         Debug.Log(Application.persistentDataPath);
+
+        musicSlider.onValueChanged.AddListener((float value) =>
+        {
+            PlayerPrefs.SetFloat("Music", value);
+            MusicManager.Instance.SetMusicVolume(value);
+        });
 
         for (int i = 0; i < savesArray.Length; i++)
         {
@@ -63,7 +78,7 @@ public class LoadSaveUIManager : MonoBehaviour
 
                     ActiveQuestsData questsData = new ActiveQuestsData(false, false, false, 0, true);
                     ObjectsData objectsData = new ObjectsData(false, false, new GridPosition(), false, new GridPosition());
-                    SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), 1, -1, false, true, 0, true, false, questsData, objectsData);
+                    SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), 1, -1, false, true, 0, true, false, questsData, objectsData, MusicManager.Instance.GetMusicSaveData());
                     SceneManager.LoadScene(1);
                 }
             });
@@ -104,6 +119,14 @@ public class LoadSaveUIManager : MonoBehaviour
     {
         mainMenuTransform.gameObject.SetActive(true);
         savesContainerTransform.gameObject.SetActive(false);
+        settingsTransform.gameObject.SetActive(false);
+    }
+
+    public void ShowSettings()
+    {
+        mainMenuTransform.gameObject.SetActive(false);
+        savesContainerTransform.gameObject.SetActive(false);
+        settingsTransform.gameObject.SetActive(true);
     }
 
 }

@@ -124,7 +124,7 @@ public class InteractAction : BaseAction
                     }
                     break;
                 case Interactable.InteractableType.RestaurantBuilding:
-                    if(SceneInfo.Instance.GetQuestData().priestRestaurantQuestIsActive && SceneInfo.Instance.GetQuestData().priestRestaurantTalkLevel == 0)
+                    if(SceneInfo.Instance.GetQuestData().priestRestaurantQuestIsActive)
                     {
                         /*PlayerData[] playerDataArray = new PlayerData[PlayerManager.Instance.GetPlayerList().Count];
 
@@ -149,7 +149,7 @@ public class InteractAction : BaseAction
                             playerDataArray[i] = new PlayerData(-1, -1, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
                         }
 
-                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 5, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 5, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData(), MusicManager.Instance.GetMusicSaveData());
                         SceneManager.LoadScene(6);
                     }
                     break;
@@ -165,7 +165,7 @@ public class InteractAction : BaseAction
                             playerDataArray[i] = new PlayerData(-1, -1, player.GetName(), player.GetPlayerType(), player.GetLevel(), player.GetAttack(), player.GetDefense(), player.GetMaxMoveDistance(), player.GetHealth().GetHealth(), player.GetHealth().GetMaxHealth(), player.GetInventory().GetItemsInInventory());
                         }
 
-                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 6, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData());
+                        SaveSystemWorldData.SaveData(playerDataArray, PlayerPrefs.GetInt("Save"), SceneInfo.Instance.GetSceneIndex(), 6, true, SceneInfo.Instance.IsTutorial(), SceneInfo.Instance.GetTutorialIndex(), SceneInfo.Instance.TutorialBattleIsActive(), SceneInfo.Instance.PriestRestaurantIsActive(), SceneInfo.Instance.GetQuestData(), SceneInfo.Instance.GetObjectsData(), MusicManager.Instance.GetMusicSaveData());
                         SceneManager.LoadScene(5);
                     }
                     else
@@ -192,6 +192,26 @@ public class InteractAction : BaseAction
                         Entity chest = LevelGrid.Instance.GetGridObject(gridPosition).GetEntity();
                         chest.Damage(10, PlayerManager.Instance.GetActualPlayer());
                     }
+                    break;
+                case Interactable.InteractableType.PriestHelmet:
+                    list = Resources.Load<ItemListSO>("ItemList").list;
+                    item = new ItemSO();
+
+                    foreach (ItemSO i in list)
+                    {
+                        if (i.itemType == ItemSO.ItemType.PriestHead)
+                        {
+                            item = i;
+                        }
+                    }
+
+                    if (PlayerManager.Instance.GetActualPlayer().GetInventory().TryAddItem(item))
+                    {
+                        SceneInfo.Instance.GetObjectsData().priestHelmetIsActive = false;
+                        Entity helmet = LevelGrid.Instance.GetGridObject(gridPosition).GetEntity();
+                        helmet.Damage(10, PlayerManager.Instance.GetActualPlayer());
+                    }
+
                     break;
                 default:
                     Debug.Log("Interactable Object Is Not Setuped");

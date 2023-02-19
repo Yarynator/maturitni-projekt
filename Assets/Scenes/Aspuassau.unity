@@ -50925,6 +50925,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 176748312202555482, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
+      propertyPath: musicList
+      value: 
+      objectReference: {fileID: 11400000, guid: b589576d47eb25c42841cbe2a67965ca, type: 2}
     - target: {fileID: 1873957585815580028, guid: 38c73f5d28c743d4a8a4815651b03265, type: 3}
       propertyPath: m_RootOrder
       value: 5
