@@ -9,6 +9,7 @@ public class AttackAction : BaseAction
     private enum State
     {
         AttackStart,
+        AttackMove,
         Attack,
         AttackEnd
     }
@@ -18,6 +19,8 @@ public class AttackAction : BaseAction
 
     private bool isAttacking;
     private State state;
+    private float moveDistance;
+    private float currentMoveDistance;
 
     private Action onActionComplete;
 
@@ -25,7 +28,62 @@ public class AttackAction : BaseAction
     {
         if (isAttacking)
         {
+
             Vector2 dir = (LevelGrid.Instance.GetWorldPosition(endGridPosition) - LevelGrid.Instance.GetWorldPosition(startGridPosition)).normalized;
+            dir *= Time.deltaTime * 10;
+
+            switch (state)
+            {
+                case State.AttackStart:
+                    moveDistance = Vector2.Distance(LevelGrid.Instance.GetWorldPosition(startGridPosition), LevelGrid.Instance.GetWorldPosition(endGridPosition));
+                    currentMoveDistance = moveDistance;
+                    state = State.AttackMove;
+                    break;
+                case State.AttackMove:
+                    Vector2 oldTransformPosition = transform.position;
+                    transform.position += new Vector3(dir.x, dir.y);
+                    currentMoveDistance -= Vector2.Distance(oldTransformPosition, transform.position);
+
+                    if(currentMoveDistance <= 0)
+                    {
+                        state = State.Attack;
+                    }
+                    break;
+                case State.Attack:
+                    if (TryGetComponent<Player>(out Player player))
+                    {
+                        LevelGrid.Instance.GetGridObject(endGridPosition).GetEntity().Damage((int)((player.GetAttack() * .5f) * player.GetLevel() + 1), player);
+                    }
+                    else if (TryGetComponent<Enemy>(out Enemy enemy))
+                    {
+                        try
+                        {
+                            LevelGrid.Instance.GetGridObject(endGridPosition).GetEntity().Damage(enemy.GetAttack(), enemy);
+                        }
+                        catch { }
+                    }
+                    state = State.AttackEnd;
+                    currentMoveDistance = moveDistance;
+                    break;
+                case State.AttackEnd:
+                    Vector2 oldEndTransformPosition = transform.position;
+                    transform.position += new Vector3(-dir.x, -dir.y);
+                    currentMoveDistance -= Vector2.Distance(oldEndTransformPosition, transform.position);
+
+                    if (currentMoveDistance <= 0)
+                    {
+                        isAttacking = false;
+                        if (TryGetComponent<Player>(out Player p))
+                        {
+                            ActionManager.Instance.SetIsBusy(false, p);
+                        }
+                        onActionComplete?.Invoke();
+                    }
+                    break;
+            }
+
+
+            /*Vector2 dir = (LevelGrid.Instance.GetWorldPosition(endGridPosition) - LevelGrid.Instance.GetWorldPosition(startGridPosition)).normalized;
             dir *= Time.deltaTime * 10;
 
             switch (state)
@@ -81,7 +139,7 @@ public class AttackAction : BaseAction
                         onActionComplete?.Invoke();
                     }
                     break;
-            }
+            }*/
         }
     }
 

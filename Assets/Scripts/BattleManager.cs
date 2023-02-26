@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class BattleManager : MonoBehaviour
     
     public static BattleManager Instance { get; private set; }
 
+
+    public event EventHandler OnIsBattleChange;
 
     [SerializeField] private List<UIInBattle> uiInBattleList;
     [SerializeField] private Button nextRoundButton;
@@ -147,7 +150,7 @@ public class BattleManager : MonoBehaviour
         int amount = allEntitySetupList.Count;
         for (int i = 0; i < amount; i++)
         {
-            int randomIndex = Random.Range(0, allEntitySetupList.Count);
+            int randomIndex = UnityEngine.Random.Range(0, allEntitySetupList.Count);
             battleOrderList.Add(allEntitySetupList[randomIndex]);
             allEntitySetupList.RemoveAt(randomIndex);
         }
@@ -209,6 +212,8 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+
+        OnIsBattleChange?.Invoke(this, EventArgs.Empty);
     }
 
     private void Enemy_OnAnyEnemyDies(object sender, System.EventArgs e)
