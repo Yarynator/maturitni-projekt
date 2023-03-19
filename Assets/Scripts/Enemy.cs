@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour, Entity
    
     public static Enemy Create(GridPosition gridPosition, string playerType, int attack, int defense, int maxMoveDistance, List<string> actions, int health)
     {
+        Debug.Log(playerType);
         EnemyTypeSO enemyType = null;
 
         List<EnemyTypeSO> enemyTypeList = Resources.Load<EnemyTypeListSO>("EnemyTypeList").enemyTypeList;

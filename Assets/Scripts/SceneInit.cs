@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class SceneInit : MonoBehaviour
 {
 
+    [SerializeField] private Transform cameraFollow;
     WorldData worldData;
     List<Player> playerList;
 
@@ -52,6 +54,17 @@ public class SceneInit : MonoBehaviour
                         {
                             bushDoor.Damage(10, null);
                         }
+                    }
+                }
+            }
+
+            foreach (SceneDataSO sceneData in Resources.Load<SceneDataListSO>("SceneDataList").sceneDataList)
+            {
+                if (sceneData.fromScene == worldData.fromSceneIndex)
+                {
+                    if (sceneData.toScene == worldData.sceneIndex)
+                    {
+                        cameraFollow.position = LevelGrid.Instance.GetWorldPosition(sceneData.spawnGridPosition);
                     }
                 }
             }
