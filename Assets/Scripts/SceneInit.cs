@@ -95,6 +95,9 @@ public class SceneInit : MonoBehaviour
                             Player.Create(outsideGridPositionList[i], playerData.playerName, playerData.playerType, playerData.level, playerData.attack, playerData.defense, playerData.maxMoveDistance, playerData.health, playerData.maxHealth, inventoryItems);
                         }
                         SceneInfo.Instance.SetInsideBuilding(false);
+
+                        cameraFollow.position = LevelGrid.Instance.GetWorldPosition(outsideGridPositionList[0]);
+
                         break;
                     case 6:
                         List<GridPosition> playerGridPositionList = Pathfinding.Instance.GetNearestGridPositionList(Resources.Load<BuildingSpawnPositionSO>("PriestRestaurantSpawnPosition").insideSpawnPosition, worldData.playerAmount);
@@ -105,6 +108,9 @@ public class SceneInit : MonoBehaviour
                             string[] inventoryItems = { playerData.inventoryHead, playerData.inventoryBody, playerData.inventoryLegs, playerData.inventoryShoes, playerData.inventoryItem1, playerData.inventoryItem2, playerData.inventoryItem3, playerData.inventoryItem4, playerData.inventoryItem5, playerData.inventoryItem6, playerData.inventoryItem7, playerData.inventoryItem8 };
                             Player.Create(playerGridPositionList[i], playerData.playerName, playerData.playerType, playerData.level, playerData.attack, playerData.defense, playerData.maxMoveDistance, playerData.health, playerData.maxHealth, inventoryItems);
                         }
+
+                        cameraFollow.position = LevelGrid.Instance.GetWorldPosition(playerGridPositionList[0]);
+
                         break;
                 }
             }

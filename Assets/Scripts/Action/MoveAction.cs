@@ -64,6 +64,7 @@ public class MoveAction : BaseAction
             }
             else
             {
+                GetComponent<AudioSource>().Stop();
                 isMoving = false;
                 if (TryGetComponent<Player>(out Player player))
                 {
@@ -152,6 +153,12 @@ public class MoveAction : BaseAction
                 {
                     ActionManager.Instance.SetIsBusy(true, player);
                 }
+
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.clip = SoundManager.Instance.GetAudioClip(SoundManager.SoundType.Steps, out float volume);
+                audioSource.volume = volume;
+                audioSource.loop = true;
+                audioSource.Play();
             }
             else
             {

@@ -140,6 +140,12 @@ public class CookieAction : BaseAction
             {
                 ActionManager.Instance.SetIsBusy(true, player);
             }
+
+            AudioSource audioSource = GetComponent<AudioSource>();
+            audioSource.clip = SoundManager.Instance.GetAudioClip(SoundManager.SoundType.Cookie, out float volume);
+            audioSource.volume = volume;
+            audioSource.loop = false;
+            audioSource.Play();
         }
     }
 

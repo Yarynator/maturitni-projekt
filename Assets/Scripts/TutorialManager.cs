@@ -78,7 +78,6 @@ public class TutorialManager : MonoBehaviour
     private void RunTutorial()
     {
         tutorialIndex = SceneInfo.Instance.GetTutorialIndex();
-        Debug.Log(tutorialIndex);
 
         if (tutorialDataList.Count > tutorialIndex)
         {
