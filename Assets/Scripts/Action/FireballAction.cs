@@ -15,6 +15,16 @@ public class FireballAction : BaseAction
 
     Action onActionComplete;
 
+    private void Start()
+    {
+        SoundManager.Instance.OnVolumeChange += Instance_OnVolumeChange;
+    }
+
+    private void Instance_OnVolumeChange(object sender, EventArgs e)
+    {
+        GetComponent<AudioSource>().volume = SoundManager.Instance.GetVolume();
+    }
+
     private void Update()
     {
         if (isAttacking)

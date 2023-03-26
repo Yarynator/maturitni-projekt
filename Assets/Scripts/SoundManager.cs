@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager Instance { get; private set; }
 
+    public event EventHandler OnVolumeChange;
 
     float volume;
 
@@ -57,5 +59,16 @@ public class SoundManager : MonoBehaviour
 
 
         return null;
+    }
+
+    public void SetVolume(float volume)
+    {
+        this.volume = volume;
+        OnVolumeChange?.Invoke(this, EventArgs.Empty);
+    }
+
+    public float GetVolume()
+    {
+        return this.volume;
     }
 }

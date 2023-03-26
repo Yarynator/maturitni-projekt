@@ -92,11 +92,18 @@ public class EscapeMenu : MonoBehaviour
             PlayerPrefs.SetFloat("Music", .5f);
         }
         musicSlider.value = PlayerPrefs.GetFloat("Music");
+        soundsSlider.value = PlayerPrefs.GetFloat("Sound");
 
         musicSlider.onValueChanged.AddListener((float value) =>
         {
             PlayerPrefs.SetFloat("Music", value);
             MusicManager.Instance.SetMusicVolume(value);
+        });
+
+        soundsSlider.onValueChanged.AddListener((float value) =>
+        {
+            PlayerPrefs.SetFloat("Sound", value);
+            SoundManager.Instance.SetVolume(value);
         });
     }
 

@@ -17,21 +17,7 @@ public static class SaveSystemWorldData
         string path = $"{Application.persistentDataPath}/save{saveIndex}/worldData.rpg";
         using (FileStream stream = new FileStream(path, FileMode.Create))
         {
-            //GameObject bush = GameObject.Find("TileDoorClosedMiddle");
             WorldData data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, isTutorial, tutorialIndex, tutorialBattleIsActive, priestRestaurantBattleIsActive, musicSaveData.type, musicSaveData.index, musicSaveData.time);
-
-            /*if(SceneInfo.Instance.GetSceneIndex() == 0)
-            {
-                data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, true, tutorialBattleIsActive, priestRestaurantBattleIsActive);
-            }
-            else if (bush == null)
-            {
-                data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, false, tutorialBattleIsActive, priestRestaurantBattleIsActive);
-            }
-            else
-            {
-                data = new WorldData(playerList.Length, sceneIndex, fromSceneIndex, insideBuilding, GameObject.Find("TileDoorClosedMiddle").TryGetComponent<BushDoor>(out BushDoor bushDoor), tutorialBattleIsActive, priestRestaurantBattleIsActive);
-            }*/
 
             formatter.Serialize(stream, data);
             stream.Close();

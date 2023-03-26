@@ -15,6 +15,7 @@ public class LoadSaveUIManager : MonoBehaviour
     [SerializeField] private Transform savesContainerTransform;
     [SerializeField] private Transform settingsTransform;
     [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider soundSlider;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class LoadSaveUIManager : MonoBehaviour
             PlayerPrefs.SetFloat("Music", .5f);
         }
         musicSlider.value = PlayerPrefs.GetFloat("Music");
+        soundSlider.value = PlayerPrefs.GetFloat("Music");
 
         Debug.Log(Application.persistentDataPath);
 
@@ -34,6 +36,10 @@ public class LoadSaveUIManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Music", value);
             MusicManager.Instance.SetMusicVolume(value);
+        });
+        soundSlider.onValueChanged.AddListener((float value) =>
+        {
+            PlayerPrefs.SetFloat("Sound", value);
         });
 
         for (int i = 0; i < savesArray.Length; i++)
