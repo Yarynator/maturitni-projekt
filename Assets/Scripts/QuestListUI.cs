@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,9 +11,9 @@ public class QuestListUI : MonoBehaviour
     public static QuestListUI Instance { get; private set; }
 
 
-    [SerializeField] private GameObject backgroundGO;
+    [SerializeField] private Transform backgroundGO;
     [SerializeField] private Button hamburgerMenu;
-    [SerializeField] private GameObject nameGO;
+    [SerializeField] private Transform nameGO;
     [SerializeField] private RectTransform questTemplate;
 
     private List<Transform> questTransformList;
@@ -57,6 +58,7 @@ public class QuestListUI : MonoBehaviour
     private void Start()
     {
         QuestManager.OnQuestListUpdate += QuestManager_OnQuestListUpdate;
+        QuestManager_OnQuestListUpdate(this, EventArgs.Empty);
     }
 
     private void Update()
@@ -118,14 +120,15 @@ public class QuestListUI : MonoBehaviour
 
     private void QuestManager_OnQuestListUpdate(object sender, System.EventArgs e)
     {
+        Debug.Log(QuestManager.Instance.GetQuestList().Count);
         UpdateListUI();
     }
 
     public void Hide()
     {
-        backgroundGO.SetActive(false);
+        backgroundGO.gameObject.SetActive(false);
         hamburgerMenu.gameObject.SetActive(false);
-        nameGO.SetActive(false);
+        nameGO.gameObject.SetActive(false);
         foreach(Transform questTransform in questTransformList)
         {
             questTransform.gameObject.SetActive(false);
@@ -136,9 +139,9 @@ public class QuestListUI : MonoBehaviour
     {
         try
         {
-            backgroundGO.SetActive(true);
+            backgroundGO.gameObject.SetActive(true);
             hamburgerMenu.gameObject.SetActive(true);
-            nameGO.SetActive(true);
+            nameGO.gameObject.SetActive(true);
             foreach (Transform questTransform in questTransformList)
             {
                 questTransform.gameObject.SetActive(true);

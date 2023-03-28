@@ -14386,9 +14386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d2dd5672d4dc44399d64ef999ffc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundGO: {fileID: 9063592701462221499}
+  backgroundGO: {fileID: 3025766025363643970}
   hamburgerMenu: {fileID: 4443586574716906290}
-  nameGO: {fileID: 8598332908736252277}
+  nameGO: {fileID: 3140733768229721321}
   questTemplate: {fileID: 5507934512556102133}
 --- !u!1 &8273533431857340045
 GameObject:
